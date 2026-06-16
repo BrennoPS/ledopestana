@@ -1,0 +1,80 @@
+@import 'tailwindcss';
+
+/* ---- Paleta: azul moderno escuro + acentos pastéis ---- */
+@theme {
+  --font-sans: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif;
+
+  /* fundo / superfícies */
+  --color-ink-950: #080d18;
+  --color-ink-900: #0b1220;
+  --color-ink-800: #0e1729;
+  --color-ink-700: #142036;
+  --color-ink-600: #1c2b47;
+
+  /* acento primário (azul pastel/celeste) */
+  --color-sky-soft: #7dd3fc;
+  --color-sky-mid: #38bdf8;
+  --color-blue-soft: #93c5fd;
+
+  /* acento secundário (âmbar pastel — energia elétrica) */
+  --color-amber-soft: #fcd34d;
+
+  /* canais de contato (cor de marca por ação) */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-deep: #1aa651;
+  --color-instagram: #e1306c;
+
+  /* Mercado Livre (toques sutis na área de produtos) */
+  --color-ml-yellow: #ffe600;
+  --color-ml-yellow-deep: #e6cf00;
+  --color-ml-blue: #3483fa;
+
+  /* texto */
+  --color-frost: #eef4ff;
+  --color-mist: #9fb3d1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(56, 189, 248, 0.12), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgba(147, 197, 253, 0.08), transparent 55%),
+    var(--color-ink-900);
+  color: var(--color-frost);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Card com efeito "glass" reutilizável */
+@utility card-glass {
+  background: linear-gradient(180deg, rgba(28, 43, 71, 0.55), rgba(14, 23, 41, 0.55));
+  border: 1px solid rgba(125, 211, 252, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+/* Texto com gradiente para destaques */
+@utility text-gradient {
+  background: linear-gradient(120deg, var(--color-sky-soft), var(--color-blue-soft));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-in {
+  animation: float-in 0.6s ease both;
+}
