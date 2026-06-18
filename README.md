@@ -42,7 +42,11 @@ aviso exibido na própria página.
 
 ## Imagens dos produtos
 
-São opcionais. Coloque as fotos em `client/public/produtos/` e referencie no campo
-`imagem` do produto. Sem foto, o card mostra um placeholder com ícone automaticamente.
-Para capas das categorias, use `client/public/categorias/` e o campo `imagem` em
-`CATEGORIAS` (sem capa, aparece um ícone temático).
+Por padrão, os cards mostram **fotos de exemplo** de um banco de imagens gratuito
+(loremflickr), escolhidas por categoria — são genéricas e servem de placeholder.
+A ordem de fallback é: foto própria → foto de exemplo → ilustração SVG local → ícone.
+
+Para usar **fotos próprias** (recomendado), coloque os arquivos em
+`client/public/produtos/` e preencha o campo `imagem` do produto em `produtos.json`
+(ex.: `"imagem": "produtos/caixa-tipo-2.jpg"`). A foto própria tem prioridade.
+As palavras-chave das fotos de exemplo ficam em `client/src/lib/imagens.ts`.
