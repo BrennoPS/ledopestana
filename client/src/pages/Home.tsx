@@ -74,22 +74,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVIÇOS */}
-      <section className="mx-auto max-w-6xl px-4 py-12">
-        <div className="mb-10 text-center">
-          <h2 className="text-3xl font-bold text-frost">O que fazemos</h2>
-          <p className="mt-3 text-mist">Serviços elétricos para todas as etapas da sua obra.</p>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {SERVICOS.map((s) => (
-            <ServiceCard key={s.titulo} {...s} />
-          ))}
-        </div>
-      </section>
-
       {/* PRODUTOS */}
-      <section className="mx-auto max-w-6xl px-4 py-12">
-        <div className="mb-10 text-center">
+      <section className="mx-auto max-w-6xl px-4 pt-4 pb-12">
+        <div className="mb-8 text-center">
           <h2 className="text-3xl font-bold text-frost">Nossos Produtos</h2>
           <p className="mt-3 text-mist">
             Materiais elétricos e padrões de entrada. Escolha uma categoria e monte sua lista.
@@ -107,6 +94,19 @@ export default function Home() {
           >
             Ver todos os produtos <ArrowRight size={18} />
           </Link>
+        </div>
+      </section>
+
+      {/* SERVIÇOS */}
+      <section className="mx-auto max-w-6xl px-4 py-12">
+        <div className="mb-10 text-center">
+          <h2 className="text-3xl font-bold text-frost">O que fazemos</h2>
+          <p className="mt-3 text-mist">Serviços elétricos para todas as etapas da sua obra.</p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {SERVICOS.map((s) => (
+            <ServiceCard key={s.titulo} {...s} />
+          ))}
         </div>
       </section>
 
