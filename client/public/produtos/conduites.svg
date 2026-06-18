@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#142036"/>
+      <stop offset="1" stop-color="#0b1220"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.18" r="0.9">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <rect width="400" height="300" fill="url(#glow)"/>
+  <!-- conduíte curvado 1 -->
+  <path d="M70 96 H230 a40 40 0 0 1 40 40 V236" fill="none" stroke="#7dd3fc" stroke-width="22" stroke-linecap="round"/>
+  <path d="M70 96 H230 a40 40 0 0 1 40 40 V236" fill="none" stroke="#0b1220" stroke-width="10" stroke-linecap="round"/>
+  <!-- conduíte curvado 2 -->
+  <path d="M120 236 V160 a40 40 0 0 1 40 -40 H330" fill="none" stroke="#93c5fd" stroke-width="22" stroke-linecap="round"/>
+  <path d="M120 236 V160 a40 40 0 0 1 40 -40 H330" fill="none" stroke="#0b1220" stroke-width="10" stroke-linecap="round"/>
+  <!-- luvas/conexões -->
+  <rect x="60" y="84" width="22" height="24" rx="4" fill="#fcd34d"/>
+  <rect x="318" y="108" width="22" height="24" rx="4" fill="#fcd34d"/>
+</svg>

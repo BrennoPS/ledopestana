@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   Gauge,
   Wrench,
@@ -11,7 +11,9 @@ import {
 } from 'lucide-react'
 import ServiceCard from '../components/ServiceCard'
 import QuoteButton from '../components/QuoteButton'
+import CategoriaCard from '../components/CategoriaCard'
 import { EMPRESA } from '../lib/contatos'
+import { CATEGORIAS } from '../lib/catalog'
 
 const SERVICOS = [
   {
@@ -42,6 +44,8 @@ const DIFERENCIAIS = [
 ]
 
 export default function Home() {
+  const navigate = useNavigate()
+
   return (
     <>
       {/* HERO */}
@@ -80,6 +84,29 @@ export default function Home() {
           {SERVICOS.map((s) => (
             <ServiceCard key={s.titulo} {...s} />
           ))}
+        </div>
+      </section>
+
+      {/* PRODUTOS */}
+      <section className="mx-auto max-w-6xl px-4 py-12">
+        <div className="mb-10 text-center">
+          <h2 className="text-3xl font-bold text-frost">Nossos Produtos</h2>
+          <p className="mt-3 text-mist">
+            Materiais elétricos e padrões de entrada. Escolha uma categoria e monte sua lista.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          {CATEGORIAS.map((c) => (
+            <CategoriaCard key={c.id} c={c} onClick={() => navigate(`/produtos?cat=${c.id}`)} />
+          ))}
+        </div>
+        <div className="mt-8 text-center">
+          <Link
+            to="/produtos"
+            className="card-glass inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-frost transition-all hover:-translate-y-0.5 hover:border-sky-soft/40"
+          >
+            Ver todos os produtos <ArrowRight size={18} />
+          </Link>
         </div>
       </section>
 

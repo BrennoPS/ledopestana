@@ -9,15 +9,19 @@ type Props = {
 }
 
 export default function ProductCard({ produto, onAdd, quantidadeNaLista = 0 }: Props) {
-  const [imgOk, setImgOk] = useState(Boolean(produto.imagem))
+  const [imgOk, setImgOk] = useState(true)
   const naLista = quantidadeNaLista > 0
+
+  // Usa a foto do produto, se houver; senão a ilustração da categoria.
+  const arquivo = (produto.imagem ?? `produtos/${produto.categoria}.svg`).replace(/^\//, '')
+  const src = import.meta.env.BASE_URL + arquivo
 
   return (
     <div className="card-glass flex flex-col overflow-hidden rounded-2xl transition-all duration-200 hover:-translate-y-1 hover:border-sky-soft/40">
       <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-ink-700 to-ink-800">
-        {imgOk && produto.imagem ? (
+        {imgOk ? (
           <img
-            src={produto.imagem}
+            src={src}
             alt={produto.nome}
             loading="lazy"
             onError={() => setImgOk(false)}

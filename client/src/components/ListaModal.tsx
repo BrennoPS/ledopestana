@@ -168,7 +168,7 @@ export default function ListaModal({
             disabled={itens.length === 0}
             className="ml-auto inline-flex items-center justify-center gap-2 rounded-xl bg-whatsapp px-5 py-3 text-sm font-semibold text-ink-950 shadow-lg shadow-whatsapp/20 transition-all hover:-translate-y-0.5 hover:bg-whatsapp-deep disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
           >
-            <MessageCircle size={18} /> Enviar lista ao Rodrigo
+            <MessageCircle size={18} /> Enviar no WhatsApp
           </button>
         </div>
       </div>

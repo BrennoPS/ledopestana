@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#142036"/>
+      <stop offset="1" stop-color="#0b1220"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.18" r="0.9">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <rect width="400" height="300" fill="url(#glow)"/>
+  <!-- rolo de cabo -->
+  <g fill="none" stroke-width="14" stroke-linecap="round">
+    <circle cx="150" cy="150" r="78" stroke="#1c2b47"/>
+    <circle cx="150" cy="150" r="54" stroke="#7dd3fc"/>
+    <circle cx="150" cy="150" r="30" stroke="#93c5fd"/>
+  </g>
+  <circle cx="150" cy="150" r="12" fill="#0b1220" stroke="#1c2b47" stroke-width="6"/>
+  <!-- fios saindo com pontas coloridas -->
+  <g fill="none" stroke-width="10" stroke-linecap="round">
+    <path d="M222 132 C 270 120, 300 112, 338 104" stroke="#fcd34d"/>
+    <path d="M226 150 C 274 150, 304 150, 344 150" stroke="#7dd3fc"/>
+    <path d="M222 168 C 270 180, 300 188, 338 196" stroke="#f87171"/>
+  </g>
+  <g stroke-width="14" stroke-linecap="round">
+    <path d="M338 104 h2" stroke="#eef4ff"/>
+    <path d="M344 150 h2" stroke="#eef4ff"/>
+    <path d="M338 196 h2" stroke="#eef4ff"/>
+  </g>
+</svg>

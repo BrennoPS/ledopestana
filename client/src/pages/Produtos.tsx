@@ -1,33 +1,18 @@
 import { useEffect, useMemo, useState } from 'react'
-import {
-  RadioTower,
-  Box,
-  PencilRuler,
-  ShieldCheck,
-  SquareStack,
-  Cable,
-  Plug,
-  ArrowLeft,
-  ShoppingBag,
-  type LucideIcon,
-} from 'lucide-react'
+import { useSearchParams } from 'react-router-dom'
+import { ArrowLeft, ShoppingBag } from 'lucide-react'
 import ProductCard from '../components/ProductCard'
+import CategoriaCard from '../components/CategoriaCard'
 import ListaModal, { type ItemLista } from '../components/ListaModal'
 import { getProducts, CATEGORIAS, nomeCategoria, type Product } from '../lib/catalog'
 
-const ICONES: Record<string, LucideIcon> = {
-  postes: RadioTower,
-  caixas: Box,
-  projetos: PencilRuler,
-  protecao: ShieldCheck,
-  conduites: SquareStack,
-  cabos: Cable,
-  tomadas: Plug,
-}
-
 export default function Produtos() {
+  const [searchParams] = useSearchParams()
+  const catParam = searchParams.get('cat')
   const [produtos, setProdutos] = useState<Product[] | null>(null)
-  const [categoriaSel, setCategoriaSel] = useState<string | null>(null)
+  const [categoriaSel, setCategoriaSel] = useState<string | null>(
+    catParam && CATEGORIAS.some((c) => c.id === catParam) ? catParam : null,
+  )
   const [itens, setItens] = useState<ItemLista[]>([])
   const [listaAberta, setListaAberta] = useState(false)
 
@@ -102,28 +87,14 @@ export default function Produtos() {
 
       {/* Grade de categorias */}
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {CATEGORIAS.map((c) => {
-          const Icon = ICONES[c.id] ?? Box
-          const ativa = categoriaSel === c.id
-          return (
-            <button
-              key={c.id}
-              type="button"
-              onClick={() => setCategoriaSel(ativa ? null : c.id)}
-              className={`group relative aspect-[4/3] overflow-hidden rounded-2xl border bg-gradient-to-br from-ink-700 to-ink-900 text-left transition-all hover:-translate-y-1 ${
-                ativa ? 'border-sky-soft ring-2 ring-sky-soft/40' : 'border-white/10 hover:border-sky-soft/40'
-              }`}
-            >
-              <Icon
-                size={88}
-                className="absolute -bottom-3 -right-3 text-sky-soft/15 transition-colors group-hover:text-sky-soft/25"
-              />
-              <span className="absolute left-3 top-3 rounded-lg bg-frost px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-ink-950 shadow-sm">
-                {c.nome}
-              </span>
-            </button>
-          )
-        })}
+        {CATEGORIAS.map((c) => (
+          <CategoriaCard
+            key={c.id}
+            c={c}
+            ativa={categoriaSel === c.id}
+            onClick={() => setCategoriaSel(categoriaSel === c.id ? null : c.id)}
+          />
+        ))}
       </div>
 
       {/* Produtos da categoria escolhida */}
