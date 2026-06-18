@@ -27,13 +27,13 @@ export type Categoria = {
 
 /** Subcategorias exibidas como grade de cards na página de Produtos. */
 export const CATEGORIAS: Categoria[] = [
-  { id: 'postes', nome: 'Postes & Padrão de Entrada' },
-  { id: 'caixas', nome: 'Caixas de Padrão' },
-  { id: 'projetos', nome: 'Projetos Elétricos' },
-  { id: 'protecao', nome: 'Disjuntores & Proteção' },
-  { id: 'conduites', nome: 'Conduítes & Caixas' },
-  { id: 'cabos', nome: 'Cabos & Fios' },
-  { id: 'tomadas', nome: 'Tomadas & Interruptores' },
+  { id: 'postes', nome: 'Postes & Padrão de Entrada', imagem: 'produtos/cat-postes.jpg' },
+  { id: 'caixas', nome: 'Caixas de Padrão', imagem: 'produtos/cat-caixas.jpg' },
+  { id: 'projetos', nome: 'Projetos Elétricos', imagem: 'produtos/cat-projetos.jpg' },
+  { id: 'protecao', nome: 'Disjuntores & Proteção', imagem: 'produtos/cat-protecao.jpg' },
+  { id: 'conduites', nome: 'Conduítes & Caixas', imagem: 'produtos/cat-conduites.jpg' },
+  { id: 'cabos', nome: 'Cabos & Fios', imagem: 'produtos/cat-cabos.jpg' },
+  { id: 'tomadas', nome: 'Tomadas & Interruptores', imagem: 'produtos/cat-tomadas.jpg' },
 ]
 
 export async function getProducts(): Promise<Product[]> {

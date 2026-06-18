@@ -10,7 +10,6 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import type { Categoria } from '../lib/catalog'
-import { fotoCategoria } from '../lib/imagens'
 
 export const ICONES: Record<string, LucideIcon> = {
   postes: RadioTower,
@@ -36,7 +35,6 @@ export default function CategoriaCard({ c, ativa = false, onClick }: Props) {
     const base = import.meta.env.BASE_URL
     const arr: string[] = []
     if (c.imagem) arr.push(base + c.imagem.replace(/^\//, ''))
-    arr.push(fotoCategoria(c.id))
     arr.push(base + `produtos/${c.id}.svg`)
     return arr
   }, [c])
