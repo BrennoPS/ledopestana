@@ -83,7 +83,7 @@ export default function ListaModal({
             type="button"
             onClick={onClose}
             aria-label="Fechar"
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-lg text-mist transition-colors hover:bg-white/5 hover:text-frost"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-lg text-mist transition-colors hover:bg-white/5 hover:text-frost"
           >
             <X size={20} />
           </button>
@@ -111,7 +111,7 @@ export default function ListaModal({
                       type="button"
                       aria-label="Diminuir"
                       onClick={() => onStep(it.produto.id, -1)}
-                      className="grid h-7 w-7 place-items-center rounded-md text-mist transition-colors hover:bg-white/10 hover:text-frost"
+                      className="grid h-9 w-9 place-items-center rounded-md text-mist transition-colors hover:bg-white/10 hover:text-frost active:bg-white/15"
                     >
                       <Minus size={15} />
                     </button>
@@ -122,13 +122,13 @@ export default function ListaModal({
                       onChange={(e) => onSetQtd(it.produto.id, e.target.value.replace(/[^\d]/g, ''))}
                       placeholder="—"
                       aria-label={`Quantidade de ${it.produto.nome}`}
-                      className="w-10 bg-transparent text-center text-sm font-semibold text-frost placeholder:text-mist/50 focus:outline-none"
+                      className="w-12 bg-transparent text-center text-base font-semibold text-frost placeholder:text-mist/50 focus:outline-none sm:w-10 sm:text-sm"
                     />
                     <button
                       type="button"
                       aria-label="Aumentar"
                       onClick={() => onStep(it.produto.id, 1)}
-                      className="grid h-7 w-7 place-items-center rounded-md text-mist transition-colors hover:bg-white/10 hover:text-frost"
+                      className="grid h-9 w-9 place-items-center rounded-md text-mist transition-colors hover:bg-white/10 hover:text-frost active:bg-white/15"
                     >
                       <Plus size={15} />
                     </button>
@@ -138,7 +138,7 @@ export default function ListaModal({
                     type="button"
                     aria-label="Remover"
                     onClick={() => onRemove(it.produto.id)}
-                    className="grid h-8 w-8 shrink-0 place-items-center rounded-lg text-mist transition-colors hover:bg-red-soft/10 hover:text-red-soft"
+                    className="grid h-9 w-9 shrink-0 place-items-center rounded-lg text-mist transition-colors hover:bg-red-soft/10 hover:text-red-soft"
                   >
                     <Trash2 size={16} />
                   </button>

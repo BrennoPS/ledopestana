@@ -63,7 +63,7 @@ export default function CategoriaCard({ c, ativa = false, onClick }: Props) {
       )}
       {/* leve escurecimento p/ legibilidade da etiqueta sobre a foto */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/50 via-transparent to-ink-950/10" />
-      <span className="absolute left-3 top-3 rounded-lg bg-frost px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-ink-950 shadow-sm">
+      <span className="absolute left-2 top-2 max-w-[calc(100%-1rem)] rounded-lg bg-frost px-2 py-1 text-[10px] font-bold uppercase leading-tight text-ink-950 shadow-sm sm:left-3 sm:top-3 sm:px-2.5 sm:text-[11px] sm:tracking-wide">
         {c.nome}
       </span>
     </button>

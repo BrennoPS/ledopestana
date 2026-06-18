@@ -43,7 +43,7 @@ const CORES: Record<Cor, { base: string; ativo: string }> = {
 }
 
 const inputClass =
-  'w-full rounded-xl border border-white/10 bg-ink-800/70 px-3 py-2.5 text-sm text-frost placeholder:text-mist/50 transition-colors focus:border-sky-soft/50 focus:outline-none focus:ring-2 focus:ring-sky-soft/20'
+  'w-full rounded-xl border border-white/10 bg-ink-800/70 px-3 py-3 text-base text-frost placeholder:text-mist/50 transition-colors focus:border-sky-soft/50 focus:outline-none focus:ring-2 focus:ring-sky-soft/20 sm:py-2.5 sm:text-sm'
 const labelClass = 'mb-1.5 block text-sm font-medium text-frost'
 
 function Chip({
@@ -163,7 +163,7 @@ export default function QuoteModal({ open, prefill, onClose }: Props) {
             type="button"
             onClick={onClose}
             aria-label="Fechar"
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-lg text-mist transition-colors hover:bg-white/5 hover:text-frost"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-lg text-mist transition-colors hover:bg-white/5 hover:text-frost"
           >
             <X size={20} />
           </button>
@@ -279,7 +279,7 @@ export default function QuoteModal({ open, prefill, onClose }: Props) {
 
           <div>
             <span className={labelClass}>Prazo para atendimento</span>
-            <div className="flex flex-wrap gap-2">
+            <div className="grid grid-cols-3 gap-2">
               {PRAZOS.map((p) => {
                 const value = `${p.label} (${p.detalhe})`
                 const active = prazo === value

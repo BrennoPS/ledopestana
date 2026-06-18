@@ -50,7 +50,7 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:py-28">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:py-28">
           <div className="max-w-3xl animate-in">
             <span className="inline-flex items-center gap-2 rounded-full border border-sky-soft/20 bg-sky-soft/5 px-3 py-1 text-xs font-medium text-sky-soft">
               Baixa e média tensão • Residencial, comercial e industrial

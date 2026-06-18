@@ -99,7 +99,7 @@ export default function Produtos() {
           value={busca}
           onChange={(e) => setBusca(e.target.value)}
           placeholder="Buscar produto (ex.: poste, disjuntor, caixa…)"
-          className="w-full rounded-xl border border-white/10 bg-ink-800/70 py-3 pl-11 pr-10 text-sm text-frost placeholder:text-mist/60 transition-colors focus:border-sky-soft/50 focus:outline-none focus:ring-2 focus:ring-sky-soft/20"
+          className="w-full rounded-xl border border-white/10 bg-ink-800/70 py-3 pl-11 pr-10 text-base text-frost placeholder:text-mist/60 transition-colors focus:border-sky-soft/50 focus:outline-none focus:ring-2 focus:ring-sky-soft/20 sm:text-sm"
         />
         {busca && (
           <button
@@ -118,7 +118,7 @@ export default function Produtos() {
         <button
           type="button"
           onClick={() => setCategoriaSel(null)}
-          className={`rounded-full px-3.5 py-1.5 text-xs font-semibold ring-1 transition-all ${
+          className={`rounded-full px-3.5 py-2 text-xs font-semibold ring-1 transition-all ${
             categoriaSel === null
               ? 'bg-sky-soft text-ink-950 ring-sky-soft'
               : 'bg-ink-800/60 text-mist ring-white/10 hover:bg-sky-soft/10 hover:text-sky-soft'
@@ -131,7 +131,7 @@ export default function Produtos() {
             key={c.id}
             type="button"
             onClick={() => setCategoriaSel(c.id)}
-            className={`rounded-full px-3.5 py-1.5 text-xs font-semibold ring-1 transition-all ${
+            className={`rounded-full px-3.5 py-2 text-xs font-semibold ring-1 transition-all ${
               categoriaSel === c.id
                 ? 'bg-sky-soft text-ink-950 ring-sky-soft'
                 : 'bg-ink-800/60 text-mist ring-white/10 hover:bg-sky-soft/10 hover:text-sky-soft'
@@ -160,7 +160,7 @@ export default function Produtos() {
         <button
           type="button"
           onClick={() => setListaAberta(true)}
-          className="fixed bottom-5 left-1/2 z-40 inline-flex -translate-x-1/2 items-center gap-2 rounded-full bg-sky-mid px-5 py-3 text-sm font-bold text-ink-950 shadow-xl shadow-sky-mid/30 transition-all hover:-translate-x-1/2 hover:-translate-y-0.5 hover:bg-sky-soft"
+          className="fixed bottom-5 left-4 z-40 inline-flex items-center gap-2 rounded-full bg-sky-mid px-5 py-3.5 text-sm font-bold text-ink-950 shadow-xl shadow-sky-mid/30 transition-all hover:-translate-y-0.5 hover:bg-sky-soft sm:left-1/2 sm:-translate-x-1/2"
         >
           <ShoppingBag size={18} /> Minha lista
           <span className="grid h-6 min-w-6 place-items-center rounded-full bg-ink-950 px-1.5 text-xs text-frost">

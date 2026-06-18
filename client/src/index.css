@@ -35,6 +35,13 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* não esconder âncoras sob o header fixo */
+  -webkit-text-size-adjust: 100%; /* evita reescala de fonte no mobile */
+}
+
+/* evita estouro horizontal acidental em telas pequenas */
+body {
+  overflow-x: hidden;
 }
 
 body {
