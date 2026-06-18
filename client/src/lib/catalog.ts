@@ -1,33 +1,49 @@
 // Camada de catálogo de produtos.
 //
-// HOJE: lê de data/produtos.json (estático).
-// VERSÃO 2 (Mercado Livre): basta trocar a implementação de getProducts() para
-// buscar de um produtos.json gerado por GitHub Action ou de uma função serverless
-// que consulta a API do Mercado Livre — a UI (página Produtos) NÃO muda.
+// Lê de data/produtos.json (estático). Os preços não são fixos — cada item traz
+// uma "nota" (ex.: "Sob consulta", "A partir de — consultar", "Instalação completa…").
+// Os produtos do site são vendidos mediante serviço ou, para cidades próximas,
+// mediante frete (ver aviso na página de Produtos).
 
 import produtosJson from '../data/produtos.json'
 
 export type Product = {
   id: string
   nome: string
-  descricao: string
-  preco: number
-  imagem: string
+  /** id da categoria (ver CATEGORIAS) */
   categoria: string
-  /** Link do anúncio no Mercado Livre. Vazio = ainda sem anúncio (cai no WhatsApp). */
-  mlUrl?: string
+  /** rótulo de preço/condição, ex.: "Sob consulta" */
+  nota: string
+  /** imagem opcional do produto (em /public/produtos/) */
+  imagem?: string
 }
 
+export type Categoria = {
+  id: string
+  nome: string
+  /** imagem opcional de capa (em /public/categorias/) — cai no ícone se faltar */
+  imagem?: string
+}
+
+/** Subcategorias exibidas como grade de cards na página de Produtos. */
+export const CATEGORIAS: Categoria[] = [
+  { id: 'postes', nome: 'Postes & Padrão de Entrada' },
+  { id: 'caixas', nome: 'Caixas de Padrão' },
+  { id: 'projetos', nome: 'Projetos Elétricos' },
+  { id: 'protecao', nome: 'Disjuntores & Proteção' },
+  { id: 'conduites', nome: 'Conduítes & Caixas' },
+  { id: 'cabos', nome: 'Cabos & Fios' },
+  { id: 'tomadas', nome: 'Tomadas & Interruptores' },
+]
+
 export async function getProducts(): Promise<Product[]> {
-  // Mantido async de propósito: a v2 fará fetch() de uma fonte remota.
   return produtosJson as Product[]
 }
 
-const formatadorBRL = new Intl.NumberFormat('pt-BR', {
-  style: 'currency',
-  currency: 'BRL',
-})
+export function getCategorias(): Categoria[] {
+  return CATEGORIAS
+}
 
-export function formatPreco(valor: number): string {
-  return formatadorBRL.format(valor)
+export function nomeCategoria(id: string): string {
+  return CATEGORIAS.find((c) => c.id === id)?.nome ?? id
 }

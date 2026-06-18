@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { X, ClipboardList, MessageCircle } from 'lucide-react'
 import { EMPRESA, linkWhatsApp, WHATSAPP_PRINCIPAL } from '../../lib/contatos'
-import { getProducts, type Product } from '../../lib/catalog'
 import type { QuotePrefill } from './QuoteModalContext'
 
 type Props = {
@@ -19,7 +18,29 @@ const SERVICOS = [
   'Projeto elétrico',
   'Outro',
 ]
-const PRAZOS = ['Sem pressa', 'Próximos dias', 'Urgente']
+
+// Do menos para o mais urgente — cada nível com sua cor.
+type Cor = 'green' | 'amber' | 'red'
+const PRAZOS: { label: string; detalhe: string; cor: Cor }[] = [
+  { label: 'Não urgente', detalhe: 'em até 5 dias', cor: 'green' },
+  { label: 'Urgente', detalhe: 'em até 2 dias', cor: 'amber' },
+  { label: 'Emergencial', detalhe: 'no mesmo dia', cor: 'red' },
+]
+
+const CORES: Record<Cor, { base: string; ativo: string }> = {
+  green: {
+    base: 'text-green-soft ring-green-soft/40 hover:bg-green-soft/15',
+    ativo: 'bg-green-soft text-ink-950 ring-green-soft',
+  },
+  amber: {
+    base: 'text-amber-soft ring-amber-soft/40 hover:bg-amber-soft/15',
+    ativo: 'bg-amber-soft text-ink-950 ring-amber-soft',
+  },
+  red: {
+    base: 'text-red-soft ring-red-soft/40 hover:bg-red-soft/15',
+    ativo: 'bg-red-soft text-ink-950 ring-red-soft',
+  },
+}
 
 const inputClass =
   'w-full rounded-xl border border-white/10 bg-ink-800/70 px-3 py-2.5 text-sm text-frost placeholder:text-mist/50 transition-colors focus:border-sky-soft/50 focus:outline-none focus:ring-2 focus:ring-sky-soft/20'
@@ -38,10 +59,10 @@ function Chip({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
+      className={`rounded-full px-3 py-1.5 text-xs font-semibold ring-1 transition-all ${
         active
-          ? 'bg-sky-soft/20 text-sky-soft ring-1 ring-sky-soft/40'
-          : 'bg-ink-800/60 text-mist ring-1 ring-white/10 hover:text-frost'
+          ? 'bg-sky-soft text-ink-950 ring-sky-soft'
+          : 'bg-ink-800/60 text-mist ring-white/10 hover:bg-sky-soft/10 hover:text-sky-soft'
       }`}
     >
       {children}
@@ -50,35 +71,28 @@ function Chip({
 }
 
 export default function QuoteModal({ open, prefill, onClose }: Props) {
-  const [produtos, setProdutos] = useState<Product[]>([])
-
   const [nome, setNome] = useState('')
+  const [endereco, setEndereco] = useState('')
+  const [cidade, setCidade] = useState('')
+  const [bairro, setBairro] = useState('')
   const [tipoImovel, setTipoImovel] = useState('')
   const [servico, setServico] = useState('')
   const [servicoOutro, setServicoOutro] = useState('')
-  const [produtoNome, setProdutoNome] = useState('')
-  const [quantidade, setQuantidade] = useState(1)
+  const [motivo, setMotivo] = useState('')
   const [prazo, setPrazo] = useState('')
-  const [local, setLocal] = useState('')
-  const [detalhes, setDetalhes] = useState('')
-
-  // Carrega catálogo uma vez (mesma fonte da página de Produtos — pronto para a v2 do ML).
-  useEffect(() => {
-    getProducts().then(setProdutos)
-  }, [])
 
   // Ao abrir: reseta e aplica o pré-preenchimento (se houver).
   useEffect(() => {
     if (!open) return
     setNome('')
+    setEndereco('')
+    setCidade('')
+    setBairro('')
     setTipoImovel(prefill?.tipoImovel ?? '')
     setServico(prefill?.servico ?? '')
     setServicoOutro('')
-    setProdutoNome(prefill?.produtoNome ?? '')
-    setQuantidade(prefill?.quantidade ?? 1)
+    setMotivo('')
     setPrazo('')
-    setLocal('')
-    setDetalhes('')
   }, [open, prefill])
 
   // Esc fecha + trava o scroll do fundo enquanto aberto.
@@ -101,25 +115,20 @@ export default function QuoteModal({ open, prefill, onClose }: Props) {
   function montarMensagem(): string {
     const linhas: string[] = [`*Solicitação de orçamento* — site ${EMPRESA.nome}`, '']
     if (nome.trim()) linhas.push(`• Nome: ${nome.trim()}`)
+    if (endereco.trim()) linhas.push(`• Endereço: ${endereco.trim()}`)
+    if (cidade.trim()) linhas.push(`• Cidade: ${cidade.trim()}`)
+    if (bairro.trim()) linhas.push(`• Bairro: ${bairro.trim()}`)
     if (tipoImovel) linhas.push(`• Tipo de imóvel: ${tipoImovel}`)
     const servicoFinal = servico === 'Outro' ? servicoOutro.trim() : servico
     if (servicoFinal) linhas.push(`• Serviço: ${servicoFinal}`)
-    if (produtoNome) {
-      const q = quantidade > 0 ? ` (x${quantidade})` : ''
-      linhas.push(`• Produto: ${produtoNome}${q}`)
-    }
     if (prazo) linhas.push(`• Prazo: ${prazo}`)
-    if (local.trim()) linhas.push(`• Local: ${local.trim()}`)
-    if (detalhes.trim()) {
-      linhas.push('', 'Detalhes:', detalhes.trim())
-    }
+    if (motivo.trim()) linhas.push('', 'Motivo:', motivo.trim())
     return linhas.join('\n')
   }
 
   function enviar(e: React.FormEvent) {
     e.preventDefault()
-    const url = linkWhatsApp(WHATSAPP_PRINCIPAL, montarMensagem())
-    window.open(url, '_blank', 'noopener,noreferrer')
+    window.open(linkWhatsApp(WHATSAPP_PRINCIPAL, montarMensagem()), '_blank', 'noopener,noreferrer')
     onClose()
   }
 
@@ -138,7 +147,7 @@ export default function QuoteModal({ open, prefill, onClose }: Props) {
       >
         <div className="mb-5 flex items-start justify-between gap-4">
           <div className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-sky-soft/10 ring-1 ring-sky-soft/20">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-sky-soft/15 ring-1 ring-sky-soft/30">
               <ClipboardList className="text-sky-soft" size={20} />
             </span>
             <div>
@@ -172,6 +181,44 @@ export default function QuoteModal({ open, prefill, onClose }: Props) {
               onChange={(e) => setNome(e.target.value)}
               placeholder="Como podemos te chamar?"
             />
+          </div>
+
+          <div>
+            <label className={labelClass} htmlFor="q-endereco">
+              Endereço
+            </label>
+            <input
+              id="q-endereco"
+              className={inputClass}
+              value={endereco}
+              onChange={(e) => setEndereco(e.target.value)}
+              placeholder="Rua e número"
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className={labelClass} htmlFor="q-cidade">
+                Cidade
+              </label>
+              <input
+                id="q-cidade"
+                className={inputClass}
+                value={cidade}
+                onChange={(e) => setCidade(e.target.value)}
+              />
+            </div>
+            <div>
+              <label className={labelClass} htmlFor="q-bairro">
+                Bairro
+              </label>
+              <input
+                id="q-bairro"
+                className={inputClass}
+                value={bairro}
+                onChange={(e) => setBairro(e.target.value)}
+              />
+            </div>
           </div>
 
           <div>
@@ -216,78 +263,44 @@ export default function QuoteModal({ open, prefill, onClose }: Props) {
             )}
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
-            <div className="col-span-2">
-              <label className={labelClass} htmlFor="q-produto">
-                Produto
-              </label>
-              <select
-                id="q-produto"
-                className={inputClass}
-                value={produtoNome}
-                onChange={(e) => setProdutoNome(e.target.value)}
-              >
-                <option value="">Nenhum / só serviço</option>
-                {produtos.map((p) => (
-                  <option key={p.id} value={p.nome}>
-                    {p.nome}
-                  </option>
-                ))}
-                <option value="Outro / não listado">Outro / não listado</option>
-              </select>
-            </div>
-            <div>
-              <label className={labelClass} htmlFor="q-qtd">
-                Qtd.
-              </label>
-              <input
-                id="q-qtd"
-                type="number"
-                min={1}
-                className={inputClass}
-                value={quantidade}
-                onChange={(e) => setQuantidade(Math.max(1, Number(e.target.value) || 1))}
-                disabled={!produtoNome}
-              />
-            </div>
-          </div>
-
           <div>
-            <span className={labelClass}>Prazo desejado</span>
-            <div className="flex flex-wrap gap-2">
-              {PRAZOS.map((p) => (
-                <Chip key={p} active={prazo === p} onClick={() => setPrazo((cur) => (cur === p ? '' : p))}>
-                  {p}
-                </Chip>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <label className={labelClass} htmlFor="q-local">
-              Cidade / bairro
-            </label>
-            <input
-              id="q-local"
-              className={inputClass}
-              value={local}
-              onChange={(e) => setLocal(e.target.value)}
-              placeholder="Onde será o serviço?"
-            />
-          </div>
-
-          <div>
-            <label className={labelClass} htmlFor="q-detalhes">
-              Detalhes do que você precisa
+            <label className={labelClass} htmlFor="q-motivo">
+              Qual o motivo / o que você precisa
             </label>
             <textarea
-              id="q-detalhes"
+              id="q-motivo"
               rows={4}
               className={`${inputClass} resize-y`}
-              value={detalhes}
-              onChange={(e) => setDetalhes(e.target.value)}
+              value={motivo}
+              onChange={(e) => setMotivo(e.target.value)}
               placeholder="Descreva livremente: o que precisa, medidas, fotos que vai enviar, dúvidas…"
             />
+          </div>
+
+          <div>
+            <span className={labelClass}>Prazo para atendimento</span>
+            <div className="flex flex-wrap gap-2">
+              {PRAZOS.map((p) => {
+                const value = `${p.label} (${p.detalhe})`
+                const active = prazo === value
+                const cor = CORES[p.cor]
+                return (
+                  <button
+                    key={p.label}
+                    type="button"
+                    onClick={() => setPrazo((cur) => (cur === value ? '' : value))}
+                    className={`flex flex-col items-start rounded-xl px-3 py-2 text-left ring-1 transition-all ${
+                      active ? cor.ativo : `bg-ink-800/60 ${cor.base}`
+                    }`}
+                  >
+                    <span className="text-sm font-bold">{p.label}</span>
+                    <span className={`text-[11px] ${active ? 'text-ink-950/80' : 'opacity-80'}`}>
+                      {p.detalhe}
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
           </div>
 
           <button

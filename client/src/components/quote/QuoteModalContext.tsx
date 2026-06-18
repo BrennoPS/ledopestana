@@ -1,11 +1,9 @@
 import { createContext, useCallback, useContext, useState, type ReactNode } from 'react'
 import QuoteModal from './QuoteModal'
 
-/** Dados opcionais para abrir o modal já pré-preenchido (ex.: a partir de um card de produto). */
+/** Dados opcionais para abrir o modal já pré-preenchido. */
 export type QuotePrefill = {
   servico?: string
-  produtoNome?: string
-  quantidade?: number
   tipoImovel?: string
 }
 

@@ -24,26 +24,25 @@ Depois, com o GitHub Pages configurado para servir da branch `main` pasta `/docs
 | O quê | Arquivo |
 |---|---|
 | Telefones, WhatsApp, Instagram, e-mail | `client/src/lib/contatos.ts` |
-| Produtos (nome, preço, descrição, imagem) | `client/src/data/produtos.json` |
-| Link de compra no Mercado Livre | `client/src/data/produtos.json` (campo `mlUrl`) |
+| Produtos (nome, nota, categoria, imagem) | `client/src/data/produtos.json` |
+| Categorias de produtos | `client/src/lib/catalog.ts` (lista `CATEGORIAS`) |
 | Cores / tema | `client/src/index.css` (bloco `@theme`) |
 | Caminho base do GitHub Pages | `client/vite.config.ts` (constante `BASE`) |
 
+## Produtos e lista
+
+Cada produto em `produtos.json` tem: `id`, `nome`, `categoria` (id de uma categoria
+em `CATEGORIAS`), `nota` (rótulo de preço/condição, ex.: "Sob consulta") e, opcional,
+`imagem`. Não há preço fixo — os valores são combinados via WhatsApp.
+
+Na página de Produtos o cliente escolhe a categoria, **monta uma lista** (adicionando
+itens e ajustando quantidade) e envia tudo de uma vez ao Rodrigo Pestana pelo WhatsApp.
+Os produtos são vendidos mediante serviço ou, para cidades próximas, mediante frete —
+aviso exibido na própria página.
+
 ## Imagens dos produtos
 
-Coloque as fotos em `client/public/produtos/` com os nomes referenciados em
-`produtos.json` (ex.: `monofasico.jpg`). Enquanto não houver foto, o card mostra
-um placeholder com ícone automaticamente.
-
-## Integração futura com o Mercado Livre (v2)
-
-A página de Produtos consome **apenas** a função `getProducts()` em
-`client/src/lib/catalog.ts`. Hoje ela lê o `produtos.json` local. Para refletir
-os anúncios do Mercado Livre, basta trocar a implementação dessa função para
-buscar de um `produtos.json` gerado por uma GitHub Action agendada ou de uma
-função serverless — **sem alterar a interface do site**. Credenciais do ML nunca
-devem ir para o código do front (ficam no servidor/Action).
-
-O botão **Comprar** de cada produto já está preparado: se o campo `mlUrl` estiver
-preenchido com o link do anúncio, o botão leva direto ao Mercado Livre (em amarelo).
-Enquanto `mlUrl` estiver vazio, o botão vira **Consultar** e cai no WhatsApp.
+São opcionais. Coloque as fotos em `client/public/produtos/` e referencie no campo
+`imagem` do produto. Sem foto, o card mostra um placeholder com ícone automaticamente.
+Para capas das categorias, use `client/public/categorias/` e o campo `imagem` em
+`CATEGORIAS` (sem capa, aparece um ícone temático).

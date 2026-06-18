@@ -47,35 +47,37 @@ sem ele, o GitHub Pages continua mostrando a versão antiga.
 | O quê | Arquivo |
 |---|---|
 | Telefones, WhatsApp, Instagram, e-mail | `client/src/lib/contatos.ts` |
-| Produtos (nome, preço, descrição, imagem) | `client/src/data/produtos.json` |
-| Link de compra no Mercado Livre | `client/src/data/produtos.json` (campo `mlUrl`) |
-| Fotos dos produtos | `client/public/produtos/` |
+| Produtos (nome, nota, categoria, imagem) | `client/src/data/produtos.json` |
+| Categorias de produtos | `client/src/lib/catalog.ts` (lista `CATEGORIAS`) |
+| Fotos dos produtos | `client/public/produtos/` (opcional) |
 | Cores / tema | `client/src/index.css` (bloco `@theme`) |
 | Caminho base do GitHub Pages | `client/vite.config.ts` (constante `BASE`) |
 
-### Botão "Comprar" e o Mercado Livre
+### Produtos e a lista
 
-Cada produto tem um campo `mlUrl` no `produtos.json`:
+Os produtos ficam em `produtos.json`, cada um com `id`, `nome`, `categoria`
+(id de uma categoria de `CATEGORIAS`), `nota` (texto de preço/condição, ex.:
+"Sob consulta") e, opcional, `imagem`. **Não há preço fixo** — os valores são
+combinados no WhatsApp.
 
-- **Vazio** (`"mlUrl": ""`) → o botão vira **"Consultar"** e abre o WhatsApp.
-- **Preenchido** com o link do anúncio → o botão vira **"Comprar"** (amarelo) e
-  leva direto ao anúncio no Mercado Livre.
-
-Ou seja: quando criar o anúncio no ML, é só colar o link no produto correspondente,
-fazer o build e dar push.
+Na página de Produtos o cliente escolhe a categoria, monta uma **lista** (adiciona
+itens e ajusta a quantidade) e envia tudo de uma vez ao **Rodrigo Pestana**. Os
+produtos são vendidos mediante serviço ou, para cidades próximas, mediante frete —
+esse aviso já aparece na página.
 
 ## 🎨 Cores por ação (já configuradas)
 
-- **Verde** = ações de WhatsApp (orçamento, consultar, botão flutuante, contatos)
+- **Verde** = ações de WhatsApp (orçamento, enviar lista, botão flutuante, contatos)
 - **Rosa** = Instagram
 - **Azul** = telefone fixo / navegação / identidade do site
-- **Amarelo** = toques do Mercado Livre (badge de categoria, botão Comprar)
+- **Prazo do orçamento**: verde (não urgente), amarelo (urgente), vermelho (emergencial)
 
 ## 📝 Modal de orçamento
 
-O botão "Solicitar orçamento" abre um formulário (tipo de imóvel, serviço, produto,
-quantidade, prazo, local e descrição livre). Todos os campos são opcionais — ao enviar,
-ele monta a mensagem e abre o WhatsApp já preenchido. O cliente revisa antes de enviar.
+O botão "Solicitar orçamento" abre um formulário (nome, endereço, cidade, bairro,
+tipo de imóvel, serviço, motivo e prazo de atendimento). Todos os campos são
+opcionais — ao enviar, ele monta a mensagem e abre o WhatsApp do Rodrigo já
+preenchido. O cliente revisa antes de enviar.
 
 ## 🌍 (Opcional) Usar um domínio próprio depois
 

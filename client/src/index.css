@@ -19,15 +19,14 @@
   /* acento secundário (âmbar pastel — energia elétrica) */
   --color-amber-soft: #fcd34d;
 
+  /* níveis de prazo (do menos para o mais urgente) */
+  --color-green-soft: #4ade80;
+  --color-red-soft: #f87171;
+
   /* canais de contato (cor de marca por ação) */
   --color-whatsapp: #25d366;
   --color-whatsapp-deep: #1aa651;
   --color-instagram: #e1306c;
-
-  /* Mercado Livre (toques sutis na área de produtos) */
-  --color-ml-yellow: #ffe600;
-  --color-ml-yellow-deep: #e6cf00;
-  --color-ml-blue: #3483fa;
 
   /* texto */
   --color-frost: #eef4ff;

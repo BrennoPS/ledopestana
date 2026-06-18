@@ -1,56 +1,182 @@
 [
   {
-    "id": "monofasico",
-    "nome": "Caixa Padrão Monofásico",
-    "descricao": "Caixa de padrão de entrada monofásica para residências, homologada pela concessionária.",
-    "preco": 350.0,
-    "imagem": "/produtos/monofasico.jpg",
-    "categoria": "Residencial",
-    "mlUrl": ""
+    "id": "poste-padrao-1",
+    "nome": "Poste padrão para 1 medidor",
+    "categoria": "postes",
+    "nota": "Instalação completa — material e mão de obra"
   },
   {
-    "id": "bifasico",
-    "nome": "Caixa Padrão Bifásico",
-    "descricao": "Caixa de padrão de entrada bifásica, ideal para residências com maior demanda de energia.",
-    "preco": 480.0,
-    "imagem": "/produtos/bifasico.jpg",
-    "categoria": "Residencial",
-    "mlUrl": ""
+    "id": "poste-padrao-2",
+    "nome": "Poste padrão para 2 medidores",
+    "categoria": "postes",
+    "nota": "Instalação completa — material e mão de obra"
   },
   {
-    "id": "trifasico",
-    "nome": "Caixa Padrão Trifásico",
-    "descricao": "Caixa de padrão de entrada trifásica para uso comercial e industrial.",
-    "preco": 650.0,
-    "imagem": "/produtos/trifasico.jpg",
-    "categoria": "Comercial",
-    "mlUrl": ""
+    "id": "poste-galvanizado-1",
+    "nome": "Poste galvanizado para 1 medidor",
+    "categoria": "postes",
+    "nota": "Instalação completa — material e mão de obra"
   },
   {
-    "id": "predio-2",
-    "nome": "Caixa Padrão Prédio - 2 Medidores",
-    "descricao": "Caixa de padrão de entrada para 2 medidores, com estrutura reforçada.",
-    "preco": 1200.0,
-    "imagem": "/produtos/predio-2.jpg",
-    "categoria": "Predial",
-    "mlUrl": ""
+    "id": "poste-galvanizado-2",
+    "nome": "Poste galvanizado para 2 medidores",
+    "categoria": "postes",
+    "nota": "Instalação completa — material e mão de obra"
   },
   {
-    "id": "predio-4",
-    "nome": "Caixa Padrão Prédio - 4 Medidores",
-    "descricao": "Caixa de padrão de entrada para 4 medidores, adequada para pequenos prédios.",
-    "preco": 1800.0,
-    "imagem": "/produtos/predio-4.jpg",
-    "categoria": "Predial",
-    "mlUrl": ""
+    "id": "poste-concreto-1",
+    "nome": "Poste de concreto para 1 medidor",
+    "categoria": "postes",
+    "nota": "Instalação completa — material e mão de obra"
   },
   {
-    "id": "predio-8",
-    "nome": "Caixa Padrão Prédio - 8 Medidores",
-    "descricao": "Caixa de padrão de entrada para 8 medidores, para prédios de maior porte.",
-    "preco": 3200.0,
-    "imagem": "/produtos/predio-8.jpg",
-    "categoria": "Predial",
-    "mlUrl": ""
+    "id": "poste-concreto-2",
+    "nome": "Poste de concreto para 2 medidores",
+    "categoria": "postes",
+    "nota": "Instalação completa — material e mão de obra"
+  },
+  {
+    "id": "projeto-eletrico",
+    "nome": "Projeto elétrico",
+    "categoria": "projetos",
+    "nota": "Sob consulta"
+  },
+  {
+    "id": "projeto-montagem-caixa",
+    "nome": "Projeto elétrico com montagem da caixa",
+    "categoria": "projetos",
+    "nota": "Sob consulta"
+  },
+  {
+    "id": "projeto-montagem-instalacao",
+    "nome": "Projeto elétrico com montagem da caixa e instalação",
+    "categoria": "projetos",
+    "nota": "Sob consulta"
+  },
+  {
+    "id": "montagem-caixa-cliente",
+    "nome": "Montagem da caixa com projeto apresentado pelo cliente",
+    "categoria": "projetos",
+    "nota": "Sob consulta"
+  },
+  {
+    "id": "caixa-tipo-2",
+    "nome": "Caixa tipo II",
+    "categoria": "caixas",
+    "nota": "Sob consulta"
+  },
+  {
+    "id": "caixa-tipo-3",
+    "nome": "Caixa tipo III",
+    "categoria": "caixas",
+    "nota": "Sob consulta"
+  },
+  {
+    "id": "caixa-tipo-4",
+    "nome": "Caixa tipo IV",
+    "categoria": "caixas",
+    "nota": "Sob consulta"
+  },
+  {
+    "id": "caixa-tipo-5",
+    "nome": "Caixa tipo V",
+    "categoria": "caixas",
+    "nota": "Sob consulta"
+  },
+  {
+    "id": "caixa-chave",
+    "nome": "Caixa chave",
+    "categoria": "caixas",
+    "nota": "Sob consulta"
+  },
+  {
+    "id": "caixa-barramento",
+    "nome": "Caixa de barramento",
+    "categoria": "caixas",
+    "nota": "Sob consulta"
+  },
+  {
+    "id": "caixa-importada-540",
+    "nome": "Caixa importada 540 x 540",
+    "categoria": "caixas",
+    "nota": "Sob consulta"
+  },
+  {
+    "id": "caixa-importada-380",
+    "nome": "Caixa importada 380 x 720",
+    "categoria": "caixas",
+    "nota": "Sob consulta"
+  },
+  {
+    "id": "disjuntor-unipolar",
+    "nome": "Disjuntor unipolar",
+    "categoria": "protecao",
+    "nota": "A partir de — sob consulta"
+  },
+  {
+    "id": "disjuntor-bipolar",
+    "nome": "Disjuntor bipolar",
+    "categoria": "protecao",
+    "nota": "A partir de — sob consulta"
+  },
+  {
+    "id": "disjuntor-tripolar",
+    "nome": "Disjuntor tripolar",
+    "categoria": "protecao",
+    "nota": "A partir de — sob consulta"
+  },
+  {
+    "id": "disjuntor-caixa-moldada",
+    "nome": "Disjuntor caixa moldada",
+    "categoria": "protecao",
+    "nota": "A partir de — sob consulta"
+  },
+  {
+    "id": "chave-seccionadora",
+    "nome": "Chave seccionadora",
+    "categoria": "protecao",
+    "nota": "A partir de — sob consulta"
+  },
+  {
+    "id": "barramento-pente",
+    "nome": "Barramento pente",
+    "categoria": "protecao",
+    "nota": "A partir de — sob consulta"
+  },
+  {
+    "id": "conduites",
+    "nome": "Conduítes",
+    "categoria": "conduites",
+    "nota": "A partir de — sob consulta"
+  },
+  {
+    "id": "caixa-disjuntor",
+    "nome": "Caixa de disjuntor",
+    "categoria": "conduites",
+    "nota": "A partir de — sob consulta"
+  },
+  {
+    "id": "caixinha-luz-embutir",
+    "nome": "Caixinha de luz de embutir",
+    "categoria": "conduites",
+    "nota": "A partir de — sob consulta"
+  },
+  {
+    "id": "caixa-passagem",
+    "nome": "Caixa de passagem",
+    "categoria": "conduites",
+    "nota": "A partir de — sob consulta"
+  },
+  {
+    "id": "cabos-flexiveis",
+    "nome": "Cabos flexíveis",
+    "categoria": "cabos",
+    "nota": "A partir de — sob consulta"
+  },
+  {
+    "id": "tomadas-interruptores-ilumi",
+    "nome": "Tomadas e interruptores ILUMI",
+    "categoria": "tomadas",
+    "nota": "A partir de — sob consulta"
   }
 ]

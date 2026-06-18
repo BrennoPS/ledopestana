@@ -5,7 +5,7 @@ export const EMPRESA = {
   nomeCompleto: 'Ledo & Pestana Soluções Elétricas',
   tagline:
     'Especialistas em instalação de padrão de entrada, manutenção elétrica e projetos em baixa e média tensão.',
-  email: 'contato@ledoepestana.com.br',
+  email: 'ledoepestanasolucoeseletricas@gmail.com',
   instagramHandle: '@ledoepestanasolucoeseletricas',
   instagramUrl: 'https://www.instagram.com/ledoepestanasolucoeseletricas/',
   telefoneLoja: '+55 13 3223-6533',
@@ -18,11 +18,10 @@ export type Contato = {
 }
 
 export const CONTATOS: Contato[] = [
-  { nome: 'Wellington Ledo', telefone: '+55 13 97424-0846', whatsapp: '5513974240846' },
   { nome: 'Rodrigo Pestana', telefone: '+55 13 99746-2683', whatsapp: '5513997462683' },
 ]
 
-// Contato principal usado nos CTAs gerais (orçamento, "falar com especialista").
+// Contato principal usado em TODOS os CTAs (orçamento, lista de produtos, especialista).
 export const WHATSAPP_PRINCIPAL = CONTATOS[0].whatsapp
 
 /** Monta um link wa.me com mensagem pré-preenchida. */
