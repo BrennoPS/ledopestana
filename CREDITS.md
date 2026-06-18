@@ -1,8 +1,14 @@
 # Créditos das imagens
 
-As fotos de exemplo dos produtos (em `client/public/produtos/cat-*.jpg`) são
-imagens genéricas obtidas gratuitamente do **Wikimedia Commons**, usadas como
-placeholder até que fotos próprias sejam adicionadas.
+As fotos de exemplo são imagens genéricas obtidas gratuitamente do
+**Wikimedia Commons**, usadas como placeholder até que fotos próprias sejam
+adicionadas:
+
+- `client/public/produtos/p-<id-do-produto>.jpg` — uma foto por produto
+- `client/public/produtos/cat-<categoria>.jpg` — capa de cada categoria
+
+São referências genéricas (não são os produtos reais da empresa). Abaixo, a
+fonte por categoria:
 
 | Categoria | Arquivo | Fonte (Wikimedia Commons) |
 |---|---|---|

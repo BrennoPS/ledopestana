@@ -17,6 +17,7 @@ export default function ProductCard({ produto, onAdd, quantidadeNaLista = 0 }: P
     const base = import.meta.env.BASE_URL
     const arr: string[] = []
     if (produto.imagem) arr.push(base + produto.imagem.replace(/^\//, ''))
+    arr.push(base + `produtos/p-${produto.id}.jpg`)
     const foto = fotoProduto(produto)
     if (foto) arr.push(foto)
     arr.push(base + `produtos/${produto.categoria}.svg`)
