@@ -42,11 +42,12 @@ aviso exibido na própria página.
 
 ## Imagens dos produtos
 
-Por padrão, os cards mostram **fotos de exemplo** de um banco de imagens gratuito
-(loremflickr), escolhidas por categoria — são genéricas e servem de placeholder.
-A ordem de fallback é: foto própria → foto de exemplo → ilustração SVG local → ícone.
+Por padrão, os cards usam **ilustrações SVG** por categoria
+(`client/public/produtos/<categoria>.svg`). A ordem de fallback é:
+foto própria → ilustração SVG da categoria → ícone.
 
-Para usar **fotos próprias** (recomendado), coloque os arquivos em
-`client/public/produtos/` e preencha o campo `imagem` do produto em `produtos.json`
-(ex.: `"imagem": "produtos/caixa-tipo-2.jpg"`). A foto própria tem prioridade.
-As palavras-chave das fotos de exemplo ficam em `client/src/lib/imagens.ts`.
+Para usar **fotos próprias**, coloque o arquivo em `client/public/produtos/` e
+preencha o campo `imagem` do produto em `produtos.json`
+(ex.: `"imagem": "produtos/caixa-tipo-2.jpg"`) — a foto tem prioridade sobre a
+ilustração. Para a capa de uma categoria, preencha `imagem` na lista
+`CATEGORIAS` em `client/src/lib/catalog.ts`.

@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Box, Plus, Check } from 'lucide-react'
 import type { Product } from '../lib/catalog'
-import { fotoProduto } from '../lib/imagens'
 
 type Props = {
   produto: Product
@@ -12,14 +11,11 @@ type Props = {
 export default function ProductCard({ produto, onAdd, quantidadeNaLista = 0 }: Props) {
   const naLista = quantidadeNaLista > 0
 
-  // Fonte preferida → fallback: foto própria, foto de exemplo, ilustração SVG, ícone.
+  // Fonte preferida → fallback: foto própria do produto, ilustração SVG, ícone.
   const candidatos = useMemo(() => {
     const base = import.meta.env.BASE_URL
     const arr: string[] = []
     if (produto.imagem) arr.push(base + produto.imagem.replace(/^\//, ''))
-    arr.push(base + `produtos/p-${produto.id}.jpg`)
-    const foto = fotoProduto(produto)
-    if (foto) arr.push(foto)
     arr.push(base + `produtos/${produto.categoria}.svg`)
     return arr
   }, [produto])
